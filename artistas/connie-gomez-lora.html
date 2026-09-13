@@ -29,6 +29,10 @@
   </main>
   <section class="contact"><div><span class="mono">¿Te interesa una obra?</span><h2>Hablemos de <em>arte.</em></h2></div><a href="mailto:curador@borboletagallery.com">curador@borboletagallery.com ↗</a></section>
   <script>const c=document.querySelector('.carousel');document.querySelector('.prev').onclick=()=>c.scrollBy({left:-c.clientWidth*.8,behavior:'smooth'});document.querySelector('.next').onclick=()=>c.scrollBy({left:c.clientWidth*.8,behavior:'smooth'});</script>
+  <script>
+    document.querySelectorAll('img[src$="connie-obra-1-whitewall.png"]').forEach(img => { img.src = img.src.replace('connie-obra-1-whitewall.png', 'connie-obra-1-whitewall-nofloor.png'); });
+    document.querySelectorAll('img[src$="connie-obra-2-whitewall.png"]').forEach(img => { img.src = img.src.replace('connie-obra-2-whitewall.png', 'connie-obra-2-whitewall-nofloor.png'); });
+  </script>
   <script src="../assets/gallery-nav.js"></script>
 </body>
 </html>
