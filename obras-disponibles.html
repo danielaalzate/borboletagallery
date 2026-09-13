@@ -21,6 +21,10 @@
   .catalog-card h3{font-size:19px;line-height:1.12;letter-spacing:-.02em;margin-bottom:14px}
   .catalog-card .artist-link{display:none}
   .catalog-card dl>div{grid-template-columns:88px 1fr;padding:7px 0}
+  .catalog-card{position:relative;overflow:hidden}
+  .catalog-card .card-body{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:flex-end;background:linear-gradient(180deg,rgba(247,244,239,.08) 0%,rgba(247,244,239,.9) 58%,rgba(247,244,239,.98) 100%);opacity:0;transform:translateY(10px);pointer-events:none;transition:opacity .25s ease,transform .25s ease}
+  .catalog-card:hover .card-body,.catalog-card:focus .card-body{opacity:1;transform:none;pointer-events:auto}
+  .catalog-card:focus{outline:2px solid var(--ink);outline-offset:3px}
   @media(max-width:1100px){.category-group .catalog-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}}
   @media(max-width:920px){.category-group .catalog-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
   @media(max-width:720px){.category-group{padding:50px 0 64px}.category-group .catalog-grid{grid-template-columns:1fr}.work-image{aspect-ratio:4/3;padding:10px}}
@@ -73,6 +77,7 @@
         if (!['artista','técnica','dimensiones','tamaño','precio'].includes(label)) row.remove();
       });
       card.querySelector('.artist-link')?.remove();
+      card.tabIndex = 0;
       grids.get(categoryFor(artist, card))?.append(card);
     });
     group.remove();
