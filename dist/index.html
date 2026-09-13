@@ -133,6 +133,26 @@
       @media (max-width:720px) { .brand { width:158px; height:72px; } }
       .program-item{grid-template-columns:92px 1fr}.program-item>.arrow{display:none}@media(max-width:720px){.program-item{grid-template-columns:50px 1fr}}
     </style>
+    <style>
+      /* Mobile navigation stays above the hero and remains fully usable. */
+      @media (max-width:720px) {
+        .top nav { z-index:100; }
+        .top nav ul { margin:0; min-width:0; }
+        .top nav ul li,
+        .top nav ul li a { display:block; min-width:0; white-space:normal; overflow-wrap:anywhere; }
+        .top nav ul li a { font-size:15px; line-height:1.3; padding:10px 0; }
+        .top nav .menu.open + ul {
+          z-index:110;
+          max-height:calc(100svh - 108px);
+          overflow-y:auto;
+          overscroll-behavior:contain;
+          -webkit-overflow-scrolling:touch;
+        }
+        body.menu-open { overflow:hidden; }
+        body.menu-open .top { overflow:visible; }
+        body.menu-open .top .hero-copy { pointer-events:none; }
+      }
+    </style>
   </head>
   <body>
     <header class="top" id="inicio">
@@ -221,6 +241,34 @@
           if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); row.click(); }
         });
       });
+    </script>
+    <script>
+      // Replace the initial mobile menu handlers with one robust, delegated state.
+      (() => {
+        const originalMenu = document.querySelector('.menu');
+        if (!originalMenu) return;
+        const originalPanel = originalMenu.nextElementSibling;
+        const menu = originalMenu.cloneNode(true);
+        originalMenu.replaceWith(menu);
+        const panel = originalPanel ? originalPanel.cloneNode(true) : null;
+        if (originalPanel && panel) originalPanel.replaceWith(panel);
+        const setOpen = (open) => {
+          menu.classList.toggle('open', open);
+          menu.setAttribute('aria-expanded', String(open));
+          document.body.classList.toggle('menu-open', open);
+          menu.textContent = open ? 'Cerrar −' : 'Menú +';
+        };
+        menu.addEventListener('click', () => setOpen(!menu.classList.contains('open')));
+        panel?.querySelectorAll('a').forEach((link) => link.addEventListener('click', (event) => {
+          setOpen(false);
+          const href = link.getAttribute('href') || '';
+          if (!href.startsWith('#')) return;
+          const target = document.querySelector(href);
+          if (!target) return;
+          event.preventDefault();
+          target.scrollIntoView({ behavior:'smooth', block:'start' });
+        }));
+      })();
     </script>
   </body>
 </html>
