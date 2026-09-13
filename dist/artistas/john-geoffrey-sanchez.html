@@ -13,6 +13,11 @@
     <style>
       .portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 50%}
     </style>
+    <style>
+      /* Aleación: preserve the artwork exactly, centering it on a clean white wall. */
+      .work:has(img[src*="john-geoffrey-obra-02"]){background:#fff}
+      .work:has(img[src*="john-geoffrey-obra-02"]) img{object-fit:contain;object-position:center center;background:#fff}
+    </style>
   </head>
   <body>
     <nav class="nav"><a class="brand" href="../index.html" aria-label="Borboleta Gallery"><img src="../assets/borboleta-logo-horizontal.jpg" alt="Borboleta Gallery" /></a><div class="nav-links"><a href="../index.html#galeria">La galería</a><a href="../obras-disponibles.html">Obras disponibles</a><a href="../index.html#artistas">Artistas</a><a href="../index.html#visita">Agenda una visita</a></div></nav>
@@ -24,6 +29,13 @@
     </main>
     <section class="contact"><div><span class="mono">¿Te interesa una obra?</span><h2>Hablemos de <em>arte.</em></h2></div><a href="mailto:curador@borboletagallery.com">curador@borboletagallery.com ↗</a></section>
     <script>const c=document.querySelector('.carousel');document.querySelector('.prev').onclick=()=>c.scrollBy({left:-c.clientWidth*.8,behavior:'smooth'});document.querySelector('.next').onclick=()=>c.scrollBy({left:c.clientWidth*.8,behavior:'smooth'});</script>
+    <script>
+      (() => {
+        const image = document.querySelector('img[src*="john-geoffrey-obra-02"]');
+        const info = image?.closest('.work')?.querySelector('.work-info');
+        if (info) info.innerHTML = 'Aleación · 2024<br>Óleo sobre esfera de acero inoxidable<br>45 cm de diámetro<br>Precio: por confirmar';
+      })();
+    </script>
   <script src="../assets/gallery-nav.js"></script>
 </body>
 </html>
