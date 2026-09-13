@@ -48,7 +48,7 @@
     if (photographyArtists.has(artist)) return 'Fotografía';
     if (sculptureArtists.has(artist)) return 'Esculturas';
     if (artist === 'María Paula Alzate Afanador') return src.includes('obra-02') || src.includes('deshojando-margaritas') ? 'Esculturas' : 'Pinturas';
-    if (artist === 'Carlos Blanco') return /obra-0[12]\./.test(src) ? 'Esculturas' : 'Pinturas';
+    if (artist === 'Carlos Blanco') return /carlos-blanco-obra-0[12](?:[-.])/.test(src) ? 'Esculturas' : 'Pinturas';
     return 'Pinturas';
   };
   const oldGroups = [...document.querySelectorAll('.artist-group')];
