@@ -16,6 +16,14 @@
       .artist-video{margin-top:70px;border-top:1px solid var(--line);padding-top:24px}.artist-video video{display:block;width:100%;max-width:960px;max-height:620px;margin-top:24px;background:#111;object-fit:contain}.artist-video .mono{display:block}
       @media(max-width:720px){.artist-video{margin-top:50px}.artist-video video{max-height:420px}}
     </style>
+    <style>
+      @media(max-width:720px){
+        /* Show the complete vertical artwork; keep its technical card below the image. */
+        .work:has(img[src*="deshojando-margaritas"]){min-height:0;display:flex;flex-direction:column;background:#fff;}
+        .work:has(img[src*="deshojando-margaritas"]) img{width:100%;height:auto;aspect-ratio:auto;object-fit:contain;flex:0 0 auto;}
+        .work:has(img[src*="deshojando-margaritas"])>div{position:static;}
+      }
+    </style>
   </head>
   <body>
     <nav class="nav"><a class="brand" href="../index.html" aria-label="Borboleta Gallery"><img src="../assets/borboleta-logo-horizontal.jpg" alt="Borboleta Gallery" /></a><div class="nav-links"><a href="../index.html#galeria">La galería</a><a href="../obras-disponibles.html">Obras disponibles</a><a href="../index.html#artistas">Artistas</a><a href="../index.html#visita">Agenda una visita</a></div></nav>
