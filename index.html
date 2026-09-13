@@ -202,5 +202,9 @@
         });
       });
     </script>
+    <script>
+      const lorenaRow = [...document.querySelectorAll('.artist-row')].find(row => row.querySelector('h3')?.textContent.trim() === 'Lorena Rosas');
+      if (lorenaRow) { lorenaRow.style.cursor = 'pointer'; lorenaRow.title = 'Ver página de Lorena Rosas'; lorenaRow.addEventListener('click', () => location.href = 'artistas/lorena-rosas.html'); }
+    </script>
   </body>
 </html>
