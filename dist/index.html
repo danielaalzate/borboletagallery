@@ -60,7 +60,8 @@
       .available-card:hover .available-image img,.available-card:focus .available-image img { opacity:.32; }
       .available-card:hover .available-info,.available-card:focus .available-info { opacity:1; transform:none; }
       .available-cta { margin-top:22px; display:flex; justify-content:space-between; align-items:center; gap:24px; padding:19px 0; border-bottom:1px solid var(--ink); font-size:16px; }
-      .available-cta a { text-decoration:underline; text-underline-offset:4px; font:500 11px "DM Mono"; text-transform:uppercase; }
+      .available-cta a { display:inline-flex; align-items:center; gap:8px; padding:12px 16px; border:1px solid var(--ink); background:var(--yellow); text-decoration:none; font:500 11px "DM Mono"; text-transform:uppercase; transition:background .2s,color .2s,transform .2s; }
+      .available-cta a:hover { background:var(--pink); color:var(--ink); transform:translateY(-2px); }
       .artists { padding-bottom:126px; }
       .artists-intro { display:grid; grid-template-columns:1fr 1.5fr; gap:8vw; padding:6px 0 44px; }
       .artists-intro h2 { margin:0; font-size:clamp(38px,5vw,72px); line-height:.94; letter-spacing:-.08em; font-weight:500; }
