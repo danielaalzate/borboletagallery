@@ -154,6 +154,13 @@
         body.menu-open .top .hero-copy { pointer-events:none; }
       }
     </style>
+    <style>
+      /* Keep the rotating home artworks fully visible, especially on narrow screens. */
+      .available-image { padding: clamp(18px, 3vw, 42px); }
+      @media (max-width:720px) {
+        .available-image { padding: 20px 28px; }
+      }
+    </style>
   </head>
   <body>
     <header class="top" id="inicio">
